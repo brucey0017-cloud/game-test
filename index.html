@@ -11,10 +11,22 @@
     <h1>Snake</h1>
     <div class="hud">
       <span id="score">Score: 0</span>
-      <button id="restart">Restart</button>
+      <span id="best">Best: 0</span>
+      <button id="pause" type="button">Pause</button>
+      <button id="restart" type="button">Restart</button>
     </div>
-    <canvas id="game" width="400" height="400"></canvas>
-    <p class="tip">Use ↑ ↓ ← → or WASD</p>
+    <canvas id="game" width="400" height="400" aria-label="Snake game" role="img"></canvas>
+
+    <div class="mobile-controls" aria-hidden="true">
+      <button data-dir="up" type="button">↑</button>
+      <div class="row">
+        <button data-dir="left" type="button">←</button>
+        <button data-dir="down" type="button">↓</button>
+        <button data-dir="right" type="button">→</button>
+      </div>
+    </div>
+
+    <p class="tip">Controls: Arrow keys / WASD · Space/P: pause · Tap/click: start</p>
   </div>
   <script src="script.js"></script>
 </body>

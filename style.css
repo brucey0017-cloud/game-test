@@ -9,26 +9,67 @@ body {
   color: #e7e7e7;
   font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
-.wrap { text-align: center; }
+.wrap { text-align: center; width: min(680px, 92vw); }
+
 #game {
+  width: min(420px, 92vw);
+  height: auto;
   border: 2px solid #2b2f3a;
   background: #151821;
-  border-radius: 10px;
+  border-radius: 12px;
+  touch-action: none;
 }
+
 .hud {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px 12px;
   align-items: center;
   justify-content: center;
-  margin: 8px 0 12px;
+  margin: 10px 0 12px;
 }
+
+.hud span {
+  padding: 4px 10px;
+  border: 1px solid #2b2f3a;
+  border-radius: 999px;
+  background: rgba(255,255,255,.03);
+}
+
 button {
   background: #2b70ff;
   color: white;
   border: none;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
   cursor: pointer;
 }
 button:hover { background: #4b86ff; }
-.tip { opacity: .6; font-size: 14px; }
+button:active { transform: translateY(1px); }
+
+.tip { opacity: .65; font-size: 13px; margin: 10px 0 0; }
+
+.mobile-controls {
+  display: none;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 14px auto 0;
+}
+
+.mobile-controls .row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.mobile-controls button {
+  width: 56px;
+  height: 44px;
+  background: #202433;
+  border: 1px solid #2b2f3a;
+}
+
+@media (max-width: 520px) {
+  .mobile-controls { display: grid; }
+}
