@@ -6,9 +6,9 @@ const restartBtn = document.getElementById('restart');
 const pauseBtn = document.getElementById('pause');
 const mobileControls = document.querySelector('.mobile-controls');
 
-const CELL = 20;
-const MIN_TILES = 14;
-const MAX_TILES = 22;
+const CELL = 16;
+const MIN_TILES = 18;
+const MAX_TILES = 34;
 
 let tiles = 20;
 let snake;
@@ -36,7 +36,7 @@ function saveBest(v) {
 }
 
 function resizeCanvas() {
-  const cssPx = Math.floor(Math.min(420, Math.max(280, window.innerWidth * 0.92)));
+  const cssPx = Math.floor(Math.min(560, Math.max(320, window.innerWidth * 0.94)));
   const nextTiles = clamp(Math.floor(cssPx / CELL), MIN_TILES, MAX_TILES);
   tiles = nextTiles;
   canvas.width = tiles * CELL;
@@ -65,7 +65,7 @@ function reset() {
   nextDir = dir;
   food = spawnFood();
   score = 0;
-  speedMs = 120;
+  speedMs = 170;
   accMs = 0;
   lastTs = undefined;
   state = 'ready';
@@ -132,8 +132,8 @@ function tick() {
     score += 10;
     scoreEl.textContent = `Score: ${score}`;
 
-    // speed curve: faster every 30 points, with a floor
-    if (score % 30 === 0) speedMs = Math.max(55, speedMs - 8);
+    // gentler speed curve: starts slower and scales gradually
+    if (score % 50 === 0) speedMs = Math.max(90, speedMs - 6);
 
     food = spawnFood();
   } else {
